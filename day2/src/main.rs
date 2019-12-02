@@ -6,20 +6,35 @@ fn main() {
         .expect("Please put your input under ./input/day2.txt");
 
     // Parse the file to create the initial memory
-    let mut memory: Vec<u32> = input
+    let memory: Vec<u32> = input
         .trim()
         .split(',')
-        .map(|num| {
-            num.parse::<u32>().unwrap()
-        })
+        .map(|num| num.parse::<u32>().unwrap())
         .collect();
 
+    // Bruteforce noun & verb
+    let expected = 19690720; // <- input part2 here
+
+    'outer: for noun in 0..99 {
+        for verb in 0..99 {
+            let result = run(memory.clone(), noun, verb);
+            if result == expected {
+                println!("{:02}{:02}", noun, verb);
+                break 'outer;
+            }
+        }
+    }
+}
+
+fn run(mut memory: Vec<u32>, noun: u32, verb: u32) -> u32 {
+    // Clone the program memory
+    //let mut memory = memory.clone();
     // Instruction pointer
     let mut rip = 0;
 
-    // 1202 programm alarm
-    memory[1] = 12;
-    memory[2] = 2;
+    // Init parameters
+    memory[1] = noun;
+    memory[2] = verb;
 
     // Execute until the programm halts
     loop {
@@ -27,18 +42,17 @@ fn main() {
             1 => {
                 opcode_add(&mut memory, rip);
                 rip += 4;
-            },
+            }
             2 => {
                 opcode_mul(&mut memory, rip);
                 rip += 4;
-            },
+            }
             99 => break, // Halt
-            _ => panic!("Unknown opcode !")
+            _ => panic!("Unknown opcode !"),
         }
     }
 
-    // Output is in the first cell
-    println!("{}", memory[0]);
+    memory[0]
 }
 
 fn opcode_add(memory: &mut [u32], rip: usize) {

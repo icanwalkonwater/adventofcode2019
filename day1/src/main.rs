@@ -10,12 +10,18 @@ fn main() {
         .map(|line| line.parse::<u32>().unwrap())
         .collect();
 
-    let fuel: u32 = input
+    // Part 1
+    let fuel1: u32 = input.iter().map(|mass| mass / 3 - 2).sum();
+
+    // Part 2
+    let fuel2: u32 = input
         .into_iter()
         .map(|mass| calculate_fuel_for_module(mass))
         .sum();
 
-    println!("{}", fuel);
+    println!("Day 1:");
+    println!("-- Part 1: {}", fuel1);
+    println!("-- Part 2: {}", fuel2);
 }
 
 fn calculate_fuel_for_module(mass: u32) -> u32 {

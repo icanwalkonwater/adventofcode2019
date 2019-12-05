@@ -7,6 +7,7 @@ pub struct Node {
 }
 
 impl Node {
+    //noinspection DuplicatedCode
     pub fn new(raw: &str) -> Node {
         let delta = match raw.chars().nth(0).unwrap() {
             'U' => Point::new(0, 1),

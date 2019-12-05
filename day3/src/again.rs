@@ -10,10 +10,7 @@ pub struct Node {
 
 impl Node {
     pub fn new(me: Point) -> Self {
-        Node {
-            me,
-            neigh: vec![],
-        }
+        Node { me, neigh: vec![] }
     }
 
     pub fn neigh(&self) -> &[(Self, Segment)] {
@@ -44,7 +41,7 @@ enum Orientation {
 }
 
 #[derive(Clone, Debug)]
-pub struct Segment<> {
+pub struct Segment {
     orientation: Orientation,
     from: Point,
     to: Point,

@@ -19,7 +19,7 @@ pub fn compute_best_phase_cfg(memory: Vec<i32>) -> (Vec<u8>, i32) {
         .unwrap()
 }
 
-fn amp_seq(memory: Vec<i32>, phases: &Vec<u8>) -> i32 {
+fn amp_seq(memory: Vec<i32>, phases: &[u8]) -> i32 {
     let mut signal = 0;
 
     for &phase in phases {
@@ -50,7 +50,7 @@ pub fn compute_best_phase_cfg_lo(memory: Vec<i32>) -> (Vec<u8>, i32) {
         .unwrap()
 }
 
-fn amp_seq_lo(memory: Vec<i32>, phases: &Vec<u8>) -> i32 {
+fn amp_seq_lo(memory: Vec<i32>, phases: &[u8]) -> i32 {
     let mut amps = Vec::new();
     for &phase in phases {
         amps.push(Amplifier::new(memory.clone(), phase));
@@ -62,14 +62,12 @@ fn amp_seq_lo(memory: Vec<i32>, phases: &Vec<u8>) -> i32 {
         if let Some(val) = amplifier_round(&mut amps[0], signal) {
             // Everything good
             signal = val;
+        } else if amps[0].halted() {
+            // Ok everything is normal
+            break;
         } else {
-            if amps[0].halted() {
-                // Ok everything is normal
-                break;
-            } else {
-                // Fuck fuck fuck
-                panic!("The first amplifier didn't produced a value !!");
-            }
+            // Fuck fuck fuck
+            panic!("The first amplifier didn't produced a value !!");
         }
 
         // Run 4 last amps, they can't fail

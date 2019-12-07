@@ -54,7 +54,7 @@ mod tests {
             1, 27, 26, 27, // 12: *27{signal + phase - 2} += *26{phase - 4}
             4, 27, // 16: write(*27) {signal + phase - 2}
             1001, 28, -1, 28, // 18: *28 += -1
-            1005, 28, 6, // 22: if *28 -> 6
+            1005, 28, 6,  // 22: if *28 -> 6
             99, // 25: HALT
             0, 0, 5,
             // 26, 27, 28: data
@@ -63,7 +63,7 @@ mod tests {
         let (phases, signal) = compute_best_phase_cfg_lo(memory);
 
         assert_eq!(phases, vec![9, 8, 7, 6, 5]);
-        assert_eq!(signal, 139629729);
+        assert_eq!(signal, 139_629_729);
     }
 
     #[test]
@@ -71,7 +71,7 @@ mod tests {
         let memory = vec![
             3, 52, 1001, 52, -5, 52, 3, 53, 1, 52, 56, 54, 1007, 54, 5, 55, 1005, 55, 26, 1001, 54,
             -5, 54, 1105, 1, 12, 1, 53, 54, 53, 1008, 54, 0, 55, 1001, 55, 1, 55, 2, 53, 55, 53, 4,
-            53, 1001, 56, -1, 56, 1005, 56, 6, 99, 0, 0, 0, 0, 10
+            53, 1001, 56, -1, 56, 1005, 56, 6, 99, 0, 0, 0, 0, 10,
         ];
 
         let (phases, signal) = compute_best_phase_cfg_lo(memory);

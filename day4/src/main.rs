@@ -88,13 +88,11 @@ fn num_at_most_doubles(num: &str) -> bool {
     for item in num.chars().skip(1) {
         if prev == item {
             occ += 1;
+        } else if occ == 2 {
+            // Early return
+            return true;
         } else {
-            if occ == 2 {
-                // Early return
-                return true;
-            } else {
-                occ = 1;
-            }
+            occ = 1;
         }
 
         prev = item;

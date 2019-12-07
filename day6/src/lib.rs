@@ -9,7 +9,7 @@ pub fn build_system<'a>(
     let mut orbits = HashMap::new();
 
     for (planet, moon) in solar_map {
-        let planet_moons = moons.entry(planet).or_insert(Vec::new());
+        let planet_moons = moons.entry(planet).or_insert_with(Vec::new);
         planet_moons.push(moon);
 
         orbits.insert(moon, planet);
@@ -70,8 +70,8 @@ pub fn count_transits<'a>(
         }
     }
 
-    from_com_path.drain(..deeper_common_orbit_index + 1);
-    to_com_path.drain(..deeper_common_orbit_index + 1);
+    from_com_path.drain(..=deeper_common_orbit_index);
+    to_com_path.drain(..=deeper_common_orbit_index);
 
     from_com_path.len() + to_com_path.len()
 }

@@ -1,4 +1,5 @@
 use crate::Run;
+use std::collections::VecDeque;
 
 pub struct OpRead {
     ptr_res: usize,
@@ -18,11 +19,11 @@ impl Run for OpRead {
     fn run_io(
         &self,
         memory: &mut [i32],
-        input: &mut Vec<i32>,
-        _: &mut Vec<i32>,
+        input: &mut VecDeque<i32>,
+        _: &mut VecDeque<i32>,
         ip: usize,
     ) -> usize {
-        let read = input.pop().expect("Input exhausted !");
+        let read = input.pop_front().expect("Input exhausted !");
 
         memory[self.ptr_res] = read;
 

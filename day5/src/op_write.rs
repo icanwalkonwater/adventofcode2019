@@ -1,4 +1,5 @@
 use crate::Run;
+use std::collections::VecDeque;
 
 pub struct OpWrite {
     ptr_val: usize,
@@ -18,13 +19,13 @@ impl Run for OpWrite {
     fn run_io(
         &self,
         memory: &mut [i32],
-        _: &mut Vec<i32>,
-        output: &mut Vec<i32>,
+        _: &mut VecDeque<i32>,
+        output: &mut VecDeque<i32>,
         ip: usize,
     ) -> usize {
         let value = memory[self.ptr_val];
 
-        output.push(value);
+        output.push_back(value);
 
         // Move 2 forward
         ip + 2

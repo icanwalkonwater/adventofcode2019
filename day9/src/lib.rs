@@ -35,7 +35,7 @@ pub fn start_int_machine(memory: Vec<i64>, input: Vec<i64>) -> MachineState {
     }
 
     // Create machine state
-    let mut state = MachineState::new();
+    let mut state = MachineState::default();
     for x in input {
         state.push_input(x);
     }
@@ -49,8 +49,6 @@ pub fn start_int_machine(memory: Vec<i64>, input: Vec<i64>) -> MachineState {
 
     // A halt has been reached
     state.halt();
-
-    //println!("{:?}", Vec::from(&memory_region[..]));
 
     // Return the whole state
     state

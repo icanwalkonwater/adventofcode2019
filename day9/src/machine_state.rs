@@ -9,6 +9,12 @@ pub struct MachineState {
     output: VecDeque<i64>,
 }
 
+impl Default for MachineState {
+    fn default() -> Self {
+        MachineState::new()
+    }
+}
+
 impl MachineState {
     pub fn new() -> Self {
         MachineState {

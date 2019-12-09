@@ -33,7 +33,7 @@ mod tests {
 
     #[test]
     fn test_16_digits() {
-        let memory = vec![1102, 34915192, 34915192, 7, 4, 7, 99, 0];
+        let memory = vec![1102, 34_915_192, 34_915_192, 7, 4, 7, 99, 0];
 
         let final_state = start_int_machine(memory, vec![]);
         assert_eq!(final_state.output()[0].to_string().len(), 16);
@@ -41,10 +41,10 @@ mod tests {
 
     #[test]
     fn test_large_number() {
-        let memory = vec![104, 1125899906842624, 99];
+        let memory = vec![104, 1_125_899_906_842_624, 99];
 
         let final_state = start_int_machine(memory, vec![]);
-        assert_eq!(final_state.output()[0], 1125899906842624);
+        assert_eq!(final_state.output()[0], 1_125_899_906_842_624);
     }
 }
 

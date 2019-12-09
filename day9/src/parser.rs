@@ -77,10 +77,6 @@ fn decode_opcode(full_opcode: i64) -> (u64, Vec<char>) {
 
     let parts: Vec<char> = full_opcode.chars().rev().skip(2).collect();
 
-    //println!("Full opcode: {}", full_opcode);
-    //println!("-- opcode: {}", opcode);
-    //println!("-- parts: {:?}", parts);
-
     (opcode, parts)
 }
 
@@ -90,9 +86,12 @@ fn parse_params_to_ptr(
     offset: usize,
     bp: usize,
 ) -> Vec<usize> {
+    // Create a Vec to hold the final pointers
     let mut ptrs = Vec::with_capacity(memory.len());
+    // An iterator over the parameter modes
     let mut modes_it = ParamHolder::from(param_modes);
 
+    // Compute each parameter to point to its correct value in memory
     for (i, &cell) in memory.iter().enumerate() {
         let mode = modes_it.next().unwrap(); // Can't be None
         let ptr = match mode {
@@ -100,8 +99,6 @@ fn parse_params_to_ptr(
             Immediate => offset + i,
             Relative => (bp as i64 + cell) as usize,
         };
-
-        //println!("-- param {}: {:?} => {}", i, mode, ptr);
 
         ptrs.push(ptr);
     }

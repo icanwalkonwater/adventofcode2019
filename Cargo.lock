@@ -36,6 +36,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "day11"
+version = "0.1.0"
+dependencies = [
+ "colored 1.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "day9 0.1.0",
+]
+
+[[package]]
 name = "day2"
 version = "0.1.0"
 

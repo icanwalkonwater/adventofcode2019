@@ -4,7 +4,9 @@ use day10::{extract_asteroids, find_asteroid_with_most_sight, start_laser};
 
 #[cfg(test)]
 mod tests {
-    use day10::{consume_laser_round, extract_asteroids, find_asteroid_with_most_sight, Point, start_laser};
+    use day10::{
+        consume_laser_round, extract_asteroids, find_asteroid_with_most_sight, start_laser, Point,
+    };
 
     #[test]
     fn test_example33() {
@@ -168,5 +170,8 @@ fn main() {
 
     println!("Day 10:");
     println!("-- Part 1: {}", in_sight);
-    println!("-- Part 2: {}", asteroid_200th.x() * 100 + asteroid_200th.y());
+    println!(
+        "-- Part 2: {}",
+        asteroid_200th.x() * 100 + asteroid_200th.y()
+    );
 }

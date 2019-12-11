@@ -2,7 +2,10 @@ use num_integer;
 
 use crate::Point;
 
-pub fn find_asteroid_with_most_sight<'a>(map: &Vec<Vec<bool>>, asteroids: &'a Vec<Point>) -> (&'a Point, usize) {
+pub fn find_asteroid_with_most_sight<'a>(
+    map: &Vec<Vec<bool>>,
+    asteroids: &'a Vec<Point>,
+) -> (&'a Point, usize) {
     asteroids
         .iter()
         .map(|asteroid| {

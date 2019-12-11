@@ -66,6 +66,10 @@ impl MachineState {
         &self.output
     }
 
+    pub fn output_mut(&mut self) -> &mut VecDeque<i64> {
+        &mut self.output
+    }
+
     pub fn into_output(self) -> Vec<i64> {
         self.output.into_iter().collect()
     }

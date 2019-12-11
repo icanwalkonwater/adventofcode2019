@@ -20,8 +20,13 @@ pub fn start_laser(map: &mut Vec<Vec<bool>>, center: &Point) -> Vec<Point> {
     destroy_order
 }
 
-pub fn consume_laser_round(map: &mut Vec<Vec<bool>>, asteroids: Vec<Point>, center: &Point) -> Vec<Point> {
-    let mut on_sight = sort_asteroids_by_angle(get_asteroids_on_sight(map, &asteroids, center), center);
+pub fn consume_laser_round(
+    map: &mut Vec<Vec<bool>>,
+    asteroids: Vec<Point>,
+    center: &Point,
+) -> Vec<Point> {
+    let mut on_sight =
+        sort_asteroids_by_angle(get_asteroids_on_sight(map, &asteroids, center), center);
 
     // Remove them from the map
     for asteroid in on_sight.iter() {

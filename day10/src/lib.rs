@@ -1,11 +1,11 @@
 pub use laser::consume_laser_round;
 pub use laser::sort_asteroids_by_angle;
+pub use laser::start_laser;
 pub use point::Point;
 pub use vision::count_asteroid_on_sight;
 pub use vision::find_asteroid_with_most_sight;
 pub use vision::get_asteroids_on_sight;
 pub use vision::is_on_sight;
-pub use laser::start_laser;
 
 mod laser;
 mod point;

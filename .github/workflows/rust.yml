@@ -1,0 +1,47 @@
+name: Rust
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build day 1
+      run: cargo build --verbose -p day1
+    - name: Run tests day 1
+      run: cargo test --verbose -p day1
+    - name: Build day 2
+      run: cargo build --verbose -p day2
+    - name: Run tests day 2
+      run: cargo test --verbose -p day2
+    - name: Build day 4
+      run: cargo build --verbose -p day4
+    - name: Run tests day 4
+      run: cargo test --verbose -p day4
+    - name: Build day 5
+      run: cargo build --verbose -p day5
+    - name: Run tests day 5
+      run: cargo test --verbose -p day5
+    - name: Build day 6
+      run: cargo build --verbose -p day6
+    - name: Run tests day 6
+      run: cargo test --verbose -p day6
+    - name: Build day 7
+      run: cargo build --verbose -p day7
+    - name: Run tests day 7
+      run: cargo test --verbose -p day7
+    - name: Build day 8
+      run: cargo build --verbose -p day8
+    - name: Run tests day 8
+      run: cargo test --verbose -p day8
+    - name: Build day 9
+      run: cargo build --verbose -p day9
+    - name: Run tests day 9
+      run: cargo test --verbose -p day9
+    - name: Build day 10
+      run: cargo build --verbose -p day10
+    - name: Run tests day 10
+      run: cargo test --verbose -p day10
